@@ -25,7 +25,7 @@ def error(e):
     """handler for 404 errors"""
     return jsonify({
         "error": "Not found"
-     })
+     }), 404
 
 
 if __name__ == '__main__':
