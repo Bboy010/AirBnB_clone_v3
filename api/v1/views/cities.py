@@ -46,9 +46,10 @@ def create_city(state_id):
         abort(400, 'Not a JSON')
     if 'name' not in data:
         abort(400, 'Missing name')
-    city = City(name=data['name'], state_id=state_id)
+    city = City(**data)
+    city.state_id = state.id
     city.save()
-    return jsonify(city.to_dict()), 201
+    return jsonify(city.to_dict())
 
 
 @app_views.route('cities/<city_id>', methods=['PUT'], strict_slashes=False)
